@@ -13,7 +13,8 @@ export const site = {
   title: 'agx — Run AI coding agents in parallel git worktrees',
   description:
     'agx is a CLI that runs Claude Code, Codex CLI, Gemini CLI, and OpenCode agents in parallel git worktrees, with a terminal dashboard to monitor, resume, and inspect every session.',
-  screenshot: 'https://jedipunkz.rocks/pix/ax.png',
+  // Vector mock of `agx dash`, resolved against BASE_URL by its consumers.
+  screenshot: 'dashboard.svg',
 } as const;
 
 export const navLinks = [

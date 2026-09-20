@@ -12,6 +12,7 @@ const { title, description = site.description } = Astro.props;
 const base = import.meta.env.BASE_URL;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
 const ogImageURL = new URL(`${base}og.png`, Astro.site).toString();
+const screenshotURL = new URL(`${base}${site.screenshot}`, Astro.site).toString();
 const ogImageAlt = 'agx terminal dashboard managing multiple AI coding agents across parallel git worktrees';
 const keywords =
   'agx, AI coding agent, AI agent orchestrator, Claude Code, Codex CLI, Gemini CLI, OpenCode, parallel agents, git worktree, terminal dashboard, CLI, developer tools, agent manager, coding agents';
@@ -29,7 +30,7 @@ const jsonLd = {
       applicationSubCategory: 'CLI',
       operatingSystem: 'macOS, Linux',
       image: ogImageURL,
-      screenshot: site.screenshot,
+      screenshot: screenshotURL,
       downloadUrl: `${REPO_URL}/releases`,
       softwareHelp: REPO_URL,
       codeRepository: REPO_URL,
