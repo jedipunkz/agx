@@ -39,10 +39,17 @@
   --line:          var(--sand-6);
   --line-strong:   var(--sand-7);
 
+  /*
+   * Text uses steps 11 and 12 only. Steps 9 and 10 are the scale's solid and
+   * decorative steps: against --bg they land at roughly 3.5:1 and 4.4:1, under
+   * the 4.5:1 WCAG AA floor, so no copy is set in them. De-emphasis comes from
+   * size, weight, and letter-spacing instead of a third text colour.
+   */
   --fg:            var(--sand-12);
   --fg-secondary:  var(--sand-11);
-  --fg-muted:      var(--sand-10);
-  --fg-faint:      var(--sand-9);
+
+  /* Non-text only: rules, ordinals, and glyphs that carry no meaning. */
+  --decor:         var(--sand-10);
 
   /* Inverted solid, used for the single primary action on the page. */
   --solid:         var(--sand-12);
@@ -163,9 +170,9 @@ a:hover {
  * command / flag / argument / operator by weight and step instead of color.
  */
 .sh-cmd  { color: var(--fg); font-weight: 600; }
-.sh-arg  { color: var(--fg-secondary); }
-.sh-flag { color: var(--fg-secondary); font-weight: 600; }
-.sh-op   { color: var(--fg-faint); }
+.sh-flag { color: var(--fg); font-weight: 400; }
+.sh-op   { color: var(--fg-secondary); font-weight: 600; }
+.sh-arg  { color: var(--fg-secondary); font-weight: 400; }
 
 @media (prefers-reduced-motion: reduce) {
   html {

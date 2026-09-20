@@ -13,7 +13,7 @@ import { features } from '../data/site';
     {features.map((feature, index) => (
       <article class:list={['card', feature.wide && 'card-wide']}>
         <header>
-          <span class="index">{String(index + 1).padStart(2, '0')}</span>
+          <span class="index" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
           <span class="label">{feature.label}</span>
         </header>
         <h3>{feature.title}</h3>
@@ -76,11 +76,11 @@ import { features } from '../data/site';
   }
 
   .index {
-    color: var(--line-strong);
+    color: var(--decor);
   }
 
   .label {
-    color: var(--fg-muted);
+    color: var(--fg-secondary);
   }
 
   h3 {

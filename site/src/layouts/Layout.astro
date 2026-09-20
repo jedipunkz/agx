@@ -142,7 +142,12 @@ const jsonLd = {
     const text = button.dataset.copy;
     if (!text) return;
 
-    navigator.clipboard
+    // navigator.clipboard is undefined in insecure contexts, so this has to be
+    // checked before the call rather than caught after it.
+    const clipboard = navigator.clipboard;
+    if (!clipboard || typeof clipboard.writeText !== 'function') return;
+
+    clipboard
       .writeText(text)
       .then(() => {
         const original = button.textContent;
@@ -155,7 +160,7 @@ const jsonLd = {
         }, 1600);
       })
       .catch(() => {
-        /* clipboard unavailable (insecure context or denied permission) */
+        /* write denied by the user or the permissions policy */
       });
   });
 </script>

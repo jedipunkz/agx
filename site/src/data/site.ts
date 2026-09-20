@@ -70,7 +70,7 @@ export const features = [
   {
     label: 'Cleanup',
     title: 'Worktrees that tidy themselves',
-    desc: 'Finished sessions age out of the dashboard and their worktrees are removed on the schedule you set in ~/.agx/agx.yaml.',
+    desc: 'Finished sessions age out of the dashboard, and while agx dash is running it removes their worktrees in the background on the schedule you set in ~/.agx/agx.yaml.',
     wide: false,
   },
 ] as const;

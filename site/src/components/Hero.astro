@@ -72,7 +72,7 @@ import { INSTALL_COMMAND, REPO_URL, site } from '../data/site';
     align-items: center;
     gap: var(--space-2);
     margin-bottom: var(--space-5);
-    color: var(--fg-muted);
+    color: var(--fg-secondary);
     font-family: var(--font-mono);
     font-size: var(--text-micro);
     letter-spacing: var(--tracking-micro);
@@ -85,7 +85,7 @@ import { INSTALL_COMMAND, REPO_URL, site } from '../data/site';
   }
 
   .sep {
-    color: var(--line-strong);
+    color: var(--decor);
   }
 
   h1 {
@@ -151,7 +151,7 @@ import { INSTALL_COMMAND, REPO_URL, site } from '../data/site';
     gap: var(--space-4);
     margin-top: var(--space-5);
     list-style: none;
-    color: var(--fg-muted);
+    color: var(--fg-secondary);
     font-family: var(--font-mono);
     font-size: var(--text-micro);
     letter-spacing: var(--tracking-micro);
@@ -186,7 +186,7 @@ import { INSTALL_COMMAND, REPO_URL, site } from '../data/site';
   }
 
   .shot-title {
-    color: var(--fg-muted);
+    color: var(--fg-secondary);
     font-family: var(--font-mono);
     font-size: var(--text-micro);
     letter-spacing: var(--tracking-micro);
@@ -294,9 +294,33 @@ import { INSTALL_COMMAND, REPO_URL, site } from '../data/site';
     if (trigger instanceof HTMLElement) trigger.focus();
   };
 
+  // The dialog's only focusable child is the close button, so trapping focus
+  // means keeping it there: aria-modal alone does not stop Tab reaching the
+  // page behind the overlay.
+  const keepFocus = () => {
+    if (closeBtn instanceof HTMLElement) closeBtn.focus();
+  };
+
   trigger?.addEventListener('click', open);
   lightbox?.addEventListener('click', close);
+
   document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape' && lightbox && !lightbox.hidden) close();
+    if (!lightbox || lightbox.hidden) return;
+
+    if (event.key === 'Escape') {
+      close();
+      return;
+    }
+
+    if (event.key === 'Tab') {
+      event.preventDefault();
+      keepFocus();
+    }
+  });
+
+  document.addEventListener('focusin', (event) => {
+    if (!lightbox || lightbox.hidden) return;
+    if (event.target instanceof Node && lightbox.contains(event.target)) return;
+    keepFocus();
   });
 </script>
