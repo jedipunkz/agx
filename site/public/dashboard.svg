@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 590" width="1000" height="590"
+     role="img" aria-label="agx dash listing agent sessions grouped by running, success, and killed status">
+  <title>agx dash</title>
+  <rect width="1000" height="590" fill="#141413"/>
+  <rect x="10.5" y="8.5" width="979" height="573" rx="5"
+        fill="none" stroke="#3a3a36" stroke-width="1"/>
+  <g font-family="ui-monospace, 'SF Mono', 'JetBrains Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace"
+     font-size="13.5" xml:space="preserve">
+    <text x="26.0" y="30.5" fill="#a98a8d" font-weight="600">2026-09-20 14:32</text>
+    <line x1="158.7" y1="31.0" x2="695.9" y2="31.0" stroke="#3a3a36" stroke-width="1"/>
+    <text x="974.0" y="30.5" fill="#8c8a83" font-weight="400" text-anchor="end">Running: 3  Success: 12  Killed: 2</text>
+    <text x="41.8" y="52.5" fill="#8e9cb0" font-weight="400">Name:  </text>
+    <text x="105.0" y="52.5" fill="#c3c1ba" font-weight="400">feat/diff-view</text>
+    <text x="41.8" y="74.5" fill="#8e9cb0" font-weight="400">Agent: </text>
+    <text x="105.0" y="74.5" fill="#c3c1ba" font-weight="400">claude</text>
+    <text x="41.8" y="96.5" fill="#8e9cb0" font-weight="400">PID:   </text>
+    <text x="105.0" y="96.5" fill="#c3c1ba" font-weight="400">48219</text>
+    <text x="41.8" y="118.5" fill="#8e9cb0" font-weight="400">Dir:   </text>
+    <text x="105.0" y="118.5" fill="#c3c1ba" font-weight="400">~/.agx/worktrees/agx-agx-1758337200-9f2a</text>
+    <text x="41.8" y="140.5" fill="#8e9cb0" font-weight="400">Branch:</text>
+    <text x="105.0" y="140.5" fill="#c3c1ba" font-weight="400">agx/feat/diff-view</text>
+    <text x="41.8" y="162.5" fill="#8e9cb0" font-weight="400">Args:  </text>
+    <text x="105.0" y="162.5" fill="#c3c1ba" font-weight="400">-</text>
+    <text x="41.8" y="184.5" fill="#8e9cb0" font-weight="400">Stats: </text>
+    <text x="105.0" y="184.5" fill="#c3c1ba" font-weight="400">0:18:42  commits 3  output 1284 lines</text>
+    <line x1="10.2" y1="207.0" x2="21.3" y2="207.0" stroke="#3a3a36" stroke-width="1"/>
+    <text x="33.9" y="206.5" fill="#b1926a" font-weight="600">Running</text>
+    <line x1="92.4" y1="207.0" x2="989.8" y2="207.0" stroke="#3a3a36" stroke-width="1"/>
+    <text x="41.8" y="228.5" fill="#8e9cb0" font-weight="400">Name/Id</text>
+    <text x="239.3" y="228.5" fill="#8e9cb0" font-weight="400">Agent</text>
+    <text x="310.4" y="228.5" fill="#8e9cb0" font-weight="400">Repo</text>
+    <text x="413.1" y="228.5" fill="#8e9cb0" font-weight="400">Status</text>
+    <text x="492.1" y="228.5" fill="#8e9cb0" font-weight="400">Ended</text>
+    <text x="594.8" y="228.5" fill="#8e9cb0" font-weight="400">Last Output</text>
+    <polygon points="26.0,246.4 26.0,255.6 33.4,251.0" fill="#9fb0c6"/>
+    <text x="41.8" y="250.5" fill="#9fb0c6" font-weight="600">feat/diff-view</text>
+    <text x="239.3" y="250.5" fill="#9fb0c6" font-weight="600">claude</text>
+    <text x="310.4" y="250.5" fill="#85a1a5" font-weight="600">agx</text>
+    <circle cx="417.1" cy="250.5" r="2.7" fill="#b1926a"/>
+    <text x="424.2" y="250.5" fill="#b1926a" font-weight="600">running</text>
+    <text x="594.8" y="250.5" fill="#96948d" font-weight="400">Applying edit to internal/tui/diffview.go</text>
+    <text x="41.8" y="272.5" fill="#b0aea7" font-weight="400">fix/worktree-prune</text>
+    <text x="239.3" y="272.5" fill="#b0aea7" font-weight="400">codex</text>
+    <text x="310.4" y="272.5" fill="#85a1a5" font-weight="400">agx</text>
+    <text x="413.1" y="272.5" fill="#7f9fae" font-weight="400">waiting</text>
+    <text x="594.8" y="272.5" fill="#96948d" font-weight="400">Remove 2 stale worktrees? (y/n)</text>
+    <text x="41.8" y="294.5" fill="#b0aea7" font-weight="400">chore/bump-deps</text>
+    <text x="239.3" y="294.5" fill="#b0aea7" font-weight="400">gemini</text>
+    <text x="310.4" y="294.5" fill="#85a1a5" font-weight="400">dotfiles</text>
+    <circle cx="417.1" cy="294.5" r="2.7" fill="#b1926a"/>
+    <text x="424.2" y="294.5" fill="#b1926a" font-weight="400">running</text>
+    <text x="594.8" y="294.5" fill="#96948d" font-weight="400">go mod tidy</text>
+    <line x1="10.2" y1="317.0" x2="21.3" y2="317.0" stroke="#3a3a36" stroke-width="1"/>
+    <text x="33.9" y="316.5" fill="#8aa37d" font-weight="600">Success (7d)</text>
+    <line x1="131.9" y1="317.0" x2="989.8" y2="317.0" stroke="#3a3a36" stroke-width="1"/>
+    <text x="41.8" y="338.5" fill="#b0aea7" font-weight="400">feat/log-follow</text>
+    <text x="239.3" y="338.5" fill="#b0aea7" font-weight="400">claude</text>
+    <text x="310.4" y="338.5" fill="#85a1a5" font-weight="400">agx</text>
+    <text x="413.1" y="338.5" fill="#8aa37d" font-weight="400">success</text>
+    <text x="492.1" y="338.5" fill="#9d8a6e" font-weight="400">09/20 13:58</text>
+    <text x="594.8" y="338.5" fill="#96948d" font-weight="400">claude --resume 7a0fc59b-d075-…</text>
+    <text x="41.8" y="360.5" fill="#b0aea7" font-weight="400">fix/dash-scroll</text>
+    <text x="239.3" y="360.5" fill="#b0aea7" font-weight="400">claude</text>
+    <text x="310.4" y="360.5" fill="#85a1a5" font-weight="400">agx</text>
+    <text x="413.1" y="360.5" fill="#8aa37d" font-weight="400">success</text>
+    <text x="492.1" y="360.5" fill="#9d8a6e" font-weight="400">09/20 12:11</text>
+    <text x="594.8" y="360.5" fill="#96948d" font-weight="400">claude --resume 5ada4a63-997a-…</text>
+    <text x="41.8" y="382.5" fill="#b0aea7" font-weight="400">feat/theme-config</text>
+    <text x="239.3" y="382.5" fill="#b0aea7" font-weight="400">codex</text>
+    <text x="310.4" y="382.5" fill="#85a1a5" font-weight="400">dotfiles</text>
+    <text x="413.1" y="382.5" fill="#8aa37d" font-weight="400">success</text>
+    <text x="492.1" y="382.5" fill="#9d8a6e" font-weight="400">09/19 22:40</text>
+    <text x="594.8" y="382.5" fill="#96948d" font-weight="400">codex resume 09418dee-f075-…</text>
+    <text x="41.8" y="404.5" fill="#b0aea7" font-weight="400">chore/go-1-26</text>
+    <text x="239.3" y="404.5" fill="#b0aea7" font-weight="400">claude</text>
+    <text x="310.4" y="404.5" fill="#85a1a5" font-weight="400">linux-tiny</text>
+    <text x="413.1" y="404.5" fill="#8aa37d" font-weight="400">success</text>
+    <text x="492.1" y="404.5" fill="#9d8a6e" font-weight="400">09/19 21:05</text>
+    <text x="594.8" y="404.5" fill="#96948d" font-weight="400">claude --resume d935090e-82e4-…</text>
+    <text x="41.8" y="426.5" fill="#b0aea7" font-weight="400">fix/state-migrate</text>
+    <text x="239.3" y="426.5" fill="#b0aea7" font-weight="400">gemini</text>
+    <text x="310.4" y="426.5" fill="#85a1a5" font-weight="400">agx</text>
+    <text x="413.1" y="426.5" fill="#8aa37d" font-weight="400">success</text>
+    <text x="492.1" y="426.5" fill="#9d8a6e" font-weight="400">09/19 18:22</text>
+    <text x="594.8" y="426.5" fill="#96948d" font-weight="400">gemini --session 2ff11f96-6bef-…</text>
+    <text x="41.8" y="448.5" fill="#b0aea7" font-weight="400">feat/agent-wait</text>
+    <text x="239.3" y="448.5" fill="#b0aea7" font-weight="400">claude</text>
+    <text x="310.4" y="448.5" fill="#85a1a5" font-weight="400">bsky-cli</text>
+    <text x="413.1" y="448.5" fill="#8aa37d" font-weight="400">success</text>
+    <text x="492.1" y="448.5" fill="#9d8a6e" font-weight="400">09/18 09:47</text>
+    <text x="594.8" y="448.5" fill="#96948d" font-weight="400">claude --resume 3cdaf772-0671-…</text>
+    <line x1="10.2" y1="471.0" x2="21.3" y2="471.0" stroke="#3a3a36" stroke-width="1"/>
+    <text x="33.9" y="470.5" fill="#7a7872" font-weight="600">Killed (7d)</text>
+    <line x1="124.0" y1="471.0" x2="989.8" y2="471.0" stroke="#3a3a36" stroke-width="1"/>
+    <text x="41.8" y="492.5" fill="#b0aea7" font-weight="400">fix/flaky-test</text>
+    <text x="239.3" y="492.5" fill="#b0aea7" font-weight="400">codex</text>
+    <text x="310.4" y="492.5" fill="#85a1a5" font-weight="400">agx</text>
+    <text x="413.1" y="492.5" fill="#77756e" font-weight="400">killed</text>
+    <text x="492.1" y="492.5" fill="#9d8a6e" font-weight="400">09/19 16:30</text>
+    <text x="594.8" y="492.5" fill="#96948d" font-weight="400">terminated by signal</text>
+    <text x="41.8" y="514.5" fill="#b0aea7" font-weight="400">feat/sixel-preview</text>
+    <text x="239.3" y="514.5" fill="#b0aea7" font-weight="400">claude</text>
+    <text x="310.4" y="514.5" fill="#85a1a5" font-weight="400">bsky-cli</text>
+    <text x="413.1" y="514.5" fill="#b08587" font-weight="400">failed</text>
+    <text x="492.1" y="514.5" fill="#9d8a6e" font-weight="400">09/18 11:02</text>
+    <text x="594.8" y="514.5" fill="#96948d" font-weight="400">exit status 1</text>
+    <line x1="14.9" y1="537.0" x2="985.1" y2="537.0" stroke="#3a3a36" stroke-width="1"/>
+    <text x="26.0" y="558.5" fill="#8c8a83" font-weight="400">[jk] select  [enter] detail  [d] diff  [y] yank  [K] kill  [r] remove  [/] search  [o] history  [q] quit</text>
+  </g>
+</svg>
+
