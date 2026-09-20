@@ -1,135 +1,82 @@
 ---
+import CommandLine from './CommandLine.astro';
+import { INSTALL_COMMAND, REPO_URL } from '../data/site';
 ---
-<section id="install" class="install-section">
-  <div class="section-inner">
-    <div>
-      <p class="section-tag">Install</p>
-      <h2>One command to start.</h2>
-      <p class="section-desc">Install agx with Homebrew on macOS or Linux, then run it inside any git repository.</p>
-    </div>
 
-    <div class="install-panel">
-      <div class="code-row">
-        <code><span class="sh-cmd">brew</span> <span class="sh-arg">tap jedipunkz/agx</span> <span class="sh-op">&amp;&amp;</span> <span class="sh-cmd">brew</span> <span class="sh-arg">install agx</span></code>
-        <button class="copy-btn" data-copy="brew tap jedipunkz/agx && brew install agx">Copy</button>
-      </div>
-    </div>
+<section id="install" class="install">
+  <div class="container">
+    <p class="eyebrow">Install</p>
+    <h2>One command, then run it in any repository.</h2>
+    <p class="lede">Homebrew on macOS and Linux. agx is MIT licensed and builds from source with Go.</p>
+
+    <CommandLine cmd={INSTALL_COMMAND} variant="panel" label="Copy the install command" />
+
+    <p class="alt">
+      Prefer a binary? Grab one from <a href={`${REPO_URL}/releases`} target="_blank" rel="noopener">Releases</a>,
+      or read the <a href={`${REPO_URL}/blob/main/README.md`} target="_blank" rel="noopener">documentation</a>.
+    </p>
   </div>
 </section>
 
 <style>
-  .install-section {
-    padding: 4.75rem 2rem 6rem;
-    border-top: 1px solid rgb(49 50 68 / 72%);
-    background: var(--tn-bg);
+  .install {
+    padding: var(--space-9) 0 var(--space-10);
+    border-top: 1px solid var(--line);
   }
 
-  .section-inner {
-    max-width: 1180px;
+  .container {
+    max-width: var(--container);
     margin: 0 auto;
-    display: grid;
-    gap: 1.5rem;
+    padding: 0 var(--gutter);
   }
 
-  .section-tag {
-    color: var(--tn-orange);
-    font-size: 0.82rem;
-    font-weight: 700;
-    margin-bottom: 0.4rem;
+  .eyebrow {
+    margin-bottom: var(--space-4);
+    color: var(--fg-secondary);
+    font-family: var(--font-mono);
+    font-size: var(--text-micro);
+    letter-spacing: var(--tracking-micro);
+    text-transform: uppercase;
   }
 
   h2 {
-    color: var(--tn-fg-strong);
-    font-family: var(--tn-mono);
-    font-size: clamp(1.3rem, 2.2vw, 1.8rem);
-    font-weight: 700;
-    letter-spacing: -0.01em;
-    line-height: 1.1;
-    margin-bottom: 1rem;
-    white-space: nowrap;
+    max-width: 30rem;
+    color: var(--fg);
+    font-size: var(--text-h2);
+    font-weight: 600;
+    letter-spacing: var(--tracking-tight);
+    line-height: 1.15;
+    text-wrap: balance;
   }
 
-  .section-desc {
-    max-width: 360px;
-    color: var(--tn-fg-dark);
-    font-size: 1rem;
+  .lede {
+    max-width: 34rem;
+    margin: var(--space-4) 0 var(--space-6);
+    color: var(--fg-secondary);
+    font-size: var(--text-lede);
   }
 
-  .install-panel {
-    max-width: 720px;
-    border: 1px solid var(--tn-border);
-    border-radius: 8px;
-    background: var(--tn-bg-dark);
-    overflow: hidden;
-    box-shadow: var(--tn-shadow);
+  .alt {
+    margin-top: var(--space-5);
+    color: var(--fg-secondary);
+    font-size: var(--text-sm);
   }
 
-  .code-row {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    gap: 1rem;
-    align-items: center;
-    padding: 1rem 1.1rem;
+  .alt a {
+    color: var(--fg-secondary);
+    text-decoration: underline;
+    text-decoration-color: var(--line-strong);
+    text-underline-offset: 3px;
   }
 
-  .code-row code {
-    color: var(--tn-blue);
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    font-size: 0.9rem;
-    font-weight: 800;
-  }
-
-  .copy-btn {
-    min-height: 36px;
-    padding: 0.35rem 0.85rem;
-    border: 1px solid rgb(137 180 250 / 30%);
-    border-radius: 6px;
-    background: rgb(69 71 90 / 92%);
-    color: var(--tn-fg-strong);
-    cursor: pointer;
-    font: inherit;
-    font-size: 0.85rem;
-    transition: border-color 0.18s ease, color 0.18s ease, background 0.18s ease;
-  }
-
-  .copy-btn:hover,
-  .copy-btn.copied {
-    border-color: var(--tn-cyan);
-    color: var(--tn-cyan);
-    background: rgb(137 180 250 / 12%);
+  .alt a:hover {
+    color: var(--fg);
+    text-decoration-color: var(--fg);
   }
 
   @media (max-width: 760px) {
-    .install-section {
-      padding: 3.5rem 1.25rem 4rem;
-    }
-
-    .code-row {
-      grid-template-columns: 1fr;
-    }
-
-    h2 {
-      white-space: normal;
+    .install {
+      padding: var(--space-8) 0;
     }
   }
 </style>
-
-<script>
-  document.querySelectorAll('.copy-btn').forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const text = btn.getAttribute('data-copy');
-      if (!text) return;
-
-      navigator.clipboard.writeText(text).then(() => {
-        btn.textContent = 'Copied';
-        btn.classList.add('copied');
-        setTimeout(() => {
-          btn.textContent = 'Copy';
-          btn.classList.remove('copied');
-        }, 1600);
-      });
-    });
-  });
-</script>

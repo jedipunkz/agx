@@ -1,0 +1,94 @@
+---
+import { highlight } from '../lib/shell';
+
+interface Props {
+  cmd: string;
+  /** `inline` is the compact hero variant; `panel` is the full-width band. */
+  variant?: 'inline' | 'panel';
+  label?: string;
+}
+
+const { cmd, variant = 'inline', label = 'Copy command' } = Astro.props;
+---
+
+<div class:list={['command', variant]}>
+  <span class="prompt" aria-hidden="true">$</span>
+  <code set:html={highlight(cmd)} />
+  <button type="button" class="copy" data-copy={cmd} aria-label={label}>Copy</button>
+</div>
+
+<style>
+  .command {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    width: 100%;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--bg-subtle);
+    font-family: var(--font-mono);
+    transition: border-color 0.18s var(--ease);
+  }
+
+  .command:hover {
+    border-color: var(--line-strong);
+  }
+
+  .inline {
+    max-width: 34rem;
+    padding: var(--space-3) var(--space-3) var(--space-3) var(--space-4);
+  }
+
+  .panel {
+    max-width: 44rem;
+    padding: var(--space-4) var(--space-4) var(--space-4) var(--space-5);
+    background: var(--bg);
+  }
+
+  .prompt {
+    flex: 0 0 auto;
+    color: var(--decor);
+    user-select: none;
+  }
+
+  code {
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow-x: auto;
+    white-space: nowrap;
+    font-size: var(--text-sm);
+    scrollbar-width: none;
+  }
+
+  code::-webkit-scrollbar {
+    display: none;
+  }
+
+  .copy {
+    flex: 0 0 auto;
+    min-height: 30px;
+    padding: 0 var(--space-3);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    background: var(--bg-elevated);
+    color: var(--fg-secondary);
+    font-family: var(--font-mono);
+    font-size: var(--text-micro);
+    letter-spacing: var(--tracking-micro);
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: color 0.18s var(--ease), border-color 0.18s var(--ease), background 0.18s var(--ease);
+  }
+
+  .copy:hover {
+    color: var(--fg);
+    border-color: var(--line-strong);
+    background: var(--bg-hover);
+  }
+
+  .copy[data-copied] {
+    color: var(--solid-fg);
+    background: var(--solid);
+    border-color: var(--solid);
+  }
+</style>

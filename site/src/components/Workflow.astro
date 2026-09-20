@@ -1,0 +1,106 @@
+---
+import Section from './Section.astro';
+import { highlight } from '../lib/shell';
+import { workflow } from '../data/site';
+---
+
+<Section
+  id="workflow"
+  label="Workflow"
+  title="Six commands, start to cleanup."
+  lede="The whole loop runs from the shell you are already in — no daemon to babysit, no per-agent terminal to keep open."
+  tone="subtle"
+>
+  <ol class="steps">
+    {workflow.map((item) => (
+      <li class="step">
+        <span class="marker" aria-hidden="true">{item.step}</span>
+        <div class="body">
+          <h3>{item.title}</h3>
+          <code class="cmd" set:html={highlight(item.cmd)} />
+          <p>{item.desc}</p>
+        </div>
+      </li>
+    ))}
+  </ol>
+
+  <p class="note">
+    Session state, logs, and worktrees live under <code>~/.agx/</code>. Dashboard theme,
+    finished-session retention, and automatic worktree cleanup are configured in <code>~/.agx/agx.yaml</code>.
+  </p>
+</Section>
+
+<style>
+  .steps {
+    list-style: none;
+    counter-reset: step;
+    border-top: 1px solid var(--line);
+  }
+
+  .step {
+    display: grid;
+    grid-template-columns: 4rem minmax(0, 1fr);
+    gap: var(--space-5);
+    padding: var(--space-6) 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .marker {
+    color: var(--decor);
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: var(--tracking-micro);
+    padding-top: 2px;
+  }
+
+  .body {
+    display: grid;
+    gap: var(--space-3);
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  h3 {
+    color: var(--fg);
+    font-size: var(--text-h3);
+    font-weight: 600;
+    letter-spacing: var(--tracking-tight);
+  }
+
+  .cmd {
+    display: block;
+    width: fit-content;
+    max-width: 100%;
+    overflow-x: auto;
+    padding: var(--space-2) var(--space-3);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    background: var(--bg);
+    font-size: var(--text-sm);
+    white-space: nowrap;
+  }
+
+  p {
+    max-width: 44rem;
+    color: var(--fg-secondary);
+  }
+
+  .note {
+    max-width: 44rem;
+    margin-top: var(--space-6);
+    color: var(--fg-secondary);
+    font-size: var(--text-sm);
+  }
+
+  .note code {
+    color: var(--fg-secondary);
+  }
+
+  @media (max-width: 620px) {
+    .step {
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--space-3);
+      padding: var(--space-5) 0;
+    }
+  }
+</style>

@@ -1,75 +1,84 @@
 ---
+import { footerLinks, site } from '../data/site';
+
 const base = import.meta.env.BASE_URL;
+const year = new Date().getFullYear();
 ---
+
 <footer class="footer">
-  <div class="footer-inner">
-    <a href={base} class="brand-link">
-      <span class="brand-name">agx</span>
-    </a>
-    <div class="footer-links">
-      <a href="https://github.com/jedipunkz/agx" target="_blank" rel="noopener">GitHub</a>
-      <a href="https://github.com/jedipunkz/agx/releases" target="_blank" rel="noopener">Releases</a>
-      <a href="https://github.com/jedipunkz/agx/issues" target="_blank" rel="noopener">Issues</a>
+  <div class="container">
+    <div class="identity">
+      <a href={base} class="brand">{site.name}</a>
+      <p>&copy; {year} jedipunkz &middot; MIT License</p>
     </div>
+
+    <nav class="links" aria-label="Project links">
+      {footerLinks.map((link) => (
+        <a href={link.href} target="_blank" rel="noopener">{link.label}</a>
+      ))}
+    </nav>
   </div>
 </footer>
 
 <style>
   .footer {
-    border-top: 1px solid rgb(49 50 68 / 72%);
-    background: var(--tn-bg-dark);
-    padding: 1.5rem 2rem;
+    border-top: 1px solid var(--line);
+    background: var(--bg-subtle);
   }
 
-  .footer-inner {
-    max-width: 1180px;
-    margin: 0 auto;
+  .container {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 1rem;
+    gap: var(--space-5);
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: var(--space-6) var(--gutter);
   }
 
-  .brand-link {
-    display: inline-flex;
-    align-items: center;
-    color: var(--tn-fg);
-    font-weight: 700;
+  .identity {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-4);
   }
 
-  .brand-name {
-    color: var(--tn-fg-dark);
-    font-family: 'SF Mono', ui-monospace, Menlo, Monaco, Consolas, monospace;
+  .brand {
+    color: var(--fg);
+    font-family: var(--font-mono);
+    font-size: var(--text-body);
+    font-weight: 600;
   }
 
-  .footer-links {
+  .identity p {
+    color: var(--fg-secondary);
+    font-size: var(--text-micro);
+  }
+
+  .links {
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-end;
-    gap: 1rem;
+    gap: var(--space-5);
   }
 
-  .footer-links a {
-    color: var(--tn-comment);
-    font-size: 0.9rem;
+  .links a {
+    color: var(--fg-secondary);
+    font-size: var(--text-sm);
   }
 
-  .footer-links a:hover {
-    color: var(--tn-blue);
+  .links a:hover {
+    color: var(--fg);
   }
 
-  @media (max-width: 560px) {
-    .footer {
-      padding: 1.25rem;
-    }
-
-    .footer-inner {
-      align-items: flex-start;
+  @media (max-width: 640px) {
+    .container {
       flex-direction: column;
+      align-items: flex-start;
+      gap: var(--space-4);
     }
 
-    .footer-links {
-      justify-content: flex-start;
+    .identity {
+      flex-direction: column;
+      gap: var(--space-1);
     }
   }
 </style>

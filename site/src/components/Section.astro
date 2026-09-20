@@ -1,0 +1,82 @@
+---
+interface Props {
+  id?: string;
+  label: string;
+  title: string;
+  lede?: string;
+  /** `subtle` lifts the band one step off the page background. */
+  tone?: 'base' | 'subtle';
+}
+
+const { id, label, title, lede, tone = 'base' } = Astro.props;
+---
+
+<section id={id} class:list={['section', `tone-${tone}`]}>
+  <div class="container">
+    <header class="section-head">
+      <p class="eyebrow">{label}</p>
+      <h2>{title}</h2>
+      {lede && <p class="lede">{lede}</p>}
+    </header>
+    <slot />
+  </div>
+</section>
+
+<style>
+  .section {
+    padding: var(--space-9) 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .tone-subtle {
+    background: var(--bg-subtle);
+  }
+
+  .container {
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 0 var(--gutter);
+  }
+
+  .section-head {
+    max-width: 44rem;
+    margin-bottom: var(--space-7);
+  }
+
+  .eyebrow {
+    color: var(--fg-secondary);
+    font-family: var(--font-mono);
+    font-size: var(--text-micro);
+    font-weight: 500;
+    letter-spacing: var(--tracking-micro);
+    text-transform: uppercase;
+    margin-bottom: var(--space-4);
+  }
+
+  h2 {
+    color: var(--fg);
+    font-size: var(--text-h2);
+    font-weight: 600;
+    letter-spacing: var(--tracking-tight);
+    line-height: 1.15;
+    text-wrap: balance;
+  }
+
+  .lede {
+    max-width: 38rem;
+    margin-top: var(--space-4);
+    color: var(--fg-secondary);
+    font-size: var(--text-lede);
+    line-height: 1.6;
+  }
+
+  @media (max-width: 760px) {
+    .section {
+      padding: var(--space-8) 0;
+    }
+
+    .section-head {
+      margin-bottom: var(--space-6);
+    }
+  }
+</style>

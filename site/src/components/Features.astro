@@ -1,143 +1,122 @@
 ---
-const features = [
-  {
-    label: 'Agents',
-    title: 'Choose the runner',
-    desc: 'Start Claude Code, Codex CLI, Gemini CLI, or OpenCode with the same agx workflow.',
-  },
-  {
-    label: 'Worktrees',
-    title: 'Separate changes',
-    desc: 'Each session gets its own git worktree and agx/<id> branch under ~/.agx/worktrees.',
-  },
-  {
-    label: 'Dashboard',
-    title: 'Watch every session',
-    desc: 'Use agx dash to monitor running, waiting, successful, failed, and killed agents from one terminal.',
-  },
-  {
-    label: 'Control',
-    title: 'Resume and interact',
-    desc: 'Resume sessions by name or ID, change into their worktrees, and send input when an agent is waiting.',
-  },
-  {
-    label: 'Logs',
-    title: 'Inspect output',
-    desc: 'Dump stripped logs or follow live output from any terminal while the daemon streams updates.',
-  },
-  {
-    label: 'Cleanup',
-    title: 'Keep worktrees tidy',
-    desc: 'Remove finished sessions manually or let the dashboard clean old worktrees on a configured schedule.',
-  },
-];
+import Section from './Section.astro';
+import { features } from '../data/site';
 ---
-<section id="features" class="features-section">
-  <div class="section-inner">
-    <div class="section-header">
-      <h2>Features</h2>
-    </div>
 
-    <div class="features-grid">
-      {features.map((f) => (
-        <article class="feature-card">
-          <p class="feature-label">{f.label}</p>
-          <h3>{f.title}</h3>
-          <p>{f.desc}</p>
-        </article>
-      ))}
-    </div>
+<Section
+  id="features"
+  label="Features"
+  title="Built for keeping many agents straight."
+  lede="Each session is isolated by git, observable from one place, and cleaned up on its own."
+>
+  <div class="grid">
+    {features.map((feature, index) => (
+      <article class:list={['card', feature.wide && 'card-wide']}>
+        <header>
+          <span class="index" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
+          <span class="label">{feature.label}</span>
+        </header>
+        <h3>{feature.title}</h3>
+        <p>{feature.desc}</p>
+      </article>
+    ))}
   </div>
-</section>
+</Section>
 
 <style>
-  .features-section {
-    padding: 3rem 2rem 5.5rem;
-    border-top: 1px solid rgb(49 50 68 / 72%);
-    background: var(--tn-bg);
-  }
-
-  .section-inner {
-    max-width: 1180px;
-    margin: 0 auto;
-  }
-
-  .section-header {
-    display: flex;
-    align-items: end;
-    justify-content: space-between;
-    gap: 2rem;
-    margin-bottom: 1.2rem;
-  }
-
-  h2 {
-    max-width: 620px;
-    color: var(--tn-fg-strong);
-    font-family: var(--tn-mono);
-    font-size: clamp(1.3rem, 2.2vw, 1.8rem);
-    font-weight: 700;
-    letter-spacing: -0.01em;
-    line-height: 1.1;
-  }
-
-  .features-grid {
+  .grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.05rem;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    background: var(--line);
+    overflow: hidden;
   }
 
-  .feature-card {
-    min-height: 230px;
-    padding: 24px;
-    border: 1px solid rgb(49 50 68 / 78%);
-    border-radius: 8px;
-    background: rgb(49 50 68 / 78%);
-    box-shadow: var(--tn-shadow);
-    transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+  .card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    padding: var(--space-6);
+    background: var(--bg);
+    transition: background 0.18s var(--ease);
   }
 
-  .feature-card:hover {
-    transform: translateY(-2px);
-    border-color: rgb(137 180 250 / 40%);
-    background: rgb(69 71 90 / 86%);
+  .card:hover {
+    background: var(--bg-subtle);
   }
 
-  .feature-label {
-    width: fit-content;
-    padding: 5px 10px;
-    border-radius: 999px;
-    border: 1px solid rgb(137 180 250 / 24%);
-    background: rgb(137 180 250 / 9%);
-    color: var(--tn-cyan);
-    font-size: 0.8rem;
-    font-weight: 900;
-    margin-bottom: 14px;
+  .card-wide {
+    grid-column: span 3;
+    background: var(--bg-subtle);
   }
 
-  .feature-card h3 {
-    color: var(--tn-fg-strong);
-    font-size: 1.45rem;
-    line-height: 1.1;
-    margin-bottom: 14px;
+  .card-wide:hover {
+    background: var(--bg-elevated);
   }
 
-  .feature-card p {
-    color: var(--tn-fg-dark);
-    font-size: 1rem;
-    line-height: 1.6;
+  .card-wide h3 {
+    max-width: 30rem;
+    font-size: 1.375rem;
   }
 
-  @media (max-width: 760px) {
-    .features-section {
-      padding: 2.25rem 1.25rem 3.5rem;
+  .card-wide p {
+    max-width: 42rem;
+  }
+
+  header {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-3);
+    font-family: var(--font-mono);
+    font-size: var(--text-micro);
+    letter-spacing: var(--tracking-micro);
+    text-transform: uppercase;
+  }
+
+  .index {
+    color: var(--decor);
+  }
+
+  .label {
+    color: var(--fg-secondary);
+  }
+
+  h3 {
+    color: var(--fg);
+    font-size: var(--text-h3);
+    font-weight: 600;
+    letter-spacing: var(--tracking-tight);
+    line-height: 1.3;
+  }
+
+  p {
+    color: var(--fg-secondary);
+    line-height: 1.65;
+  }
+
+  @media (max-width: 900px) {
+    .grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
-    .section-header {
-      display: block;
+    .card-wide {
+      grid-column: span 2;
+    }
+  }
+
+  @media (max-width: 620px) {
+    .grid {
+      grid-template-columns: minmax(0, 1fr);
     }
 
-    .features-grid {
-      grid-template-columns: 1fr;
+    .card-wide {
+      grid-column: span 1;
+    }
+
+    .card {
+      padding: var(--space-5);
     }
   }
 </style>

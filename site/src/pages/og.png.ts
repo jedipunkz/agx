@@ -11,6 +11,25 @@ const fontBold = readFileSync(
   resolve(process.cwd(), 'node_modules/@fontsource/inter/files/inter-latin-700-normal.woff')
 );
 
+// Radix "Sand" dark steps, matching src/styles/theme.css.
+const SAND_1 = '#111110';
+const SAND_6 = '#3b3a37';
+const SAND_10 = '#7c7b74';
+const SAND_11 = '#b5b3ad';
+const SAND_12 = '#eeeeec';
+
+type Node = Parameters<typeof satori>[0];
+
+const text = (content: string, style: Record<string, unknown>): Node => ({
+  type: 'div',
+  props: { style: { display: 'flex', ...style }, children: content },
+});
+
+const rule = (): Node => ({
+  type: 'div',
+  props: { style: { display: 'flex', width: '100%', height: '1px', backgroundColor: SAND_6 } },
+});
+
 export const GET: APIRoute = async () => {
   const svg = await satori(
     {
@@ -21,86 +40,58 @@ export const GET: APIRoute = async () => {
           flexDirection: 'column',
           width: '1200px',
           height: '630px',
-          backgroundColor: '#1e1e2e',
+          padding: '72px 80px',
+          backgroundColor: SAND_1,
+          fontFamily: 'Inter',
         },
         children: [
-          // Top accent bar
+          text('AGX / AGENT CROSS', {
+            fontSize: 20,
+            fontWeight: 700,
+            letterSpacing: '4px',
+            color: SAND_10,
+          }),
           {
             type: 'div',
             props: {
-              style: {
-                height: '6px',
-                background: 'linear-gradient(to right, #89b4fa, #cba6f7)',
-                width: '100%',
-                flexShrink: 0,
-              },
+              style: { display: 'flex', flexDirection: 'column', flex: 1, justifyContent: 'center' },
+              children: [
+                text('Run coding agents', {
+                  fontSize: 68,
+                  fontWeight: 700,
+                  color: SAND_12,
+                  letterSpacing: '-2px',
+                  lineHeight: 1.12,
+                }),
+                text('in parallel git worktrees.', {
+                  fontSize: 68,
+                  fontWeight: 700,
+                  color: SAND_12,
+                  letterSpacing: '-2px',
+                  lineHeight: 1.12,
+                }),
+                text('Claude Code · Codex CLI · Gemini CLI · OpenCode', {
+                  fontSize: 24,
+                  fontWeight: 400,
+                  color: SAND_11,
+                  marginTop: '32px',
+                }),
+              ],
             },
           },
-          // Main content area
+          rule(),
           {
             type: 'div',
             props: {
               style: {
                 display: 'flex',
-                flexDirection: 'column',
-                flex: 1,
-                padding: '60px 80px',
+                justifyContent: 'space-between',
+                width: '100%',
+                marginTop: '24px',
               },
               children: [
-                // Top section — fills remaining space
-                {
-                  type: 'div',
-                  props: {
-                    style: {
-                      display: 'flex',
-                      flexDirection: 'column',
-                      flex: 1,
-                    },
-                    children: [
-                      {
-                        type: 'div',
-                        props: {
-                          style: {
-                            display: 'flex',
-                            fontSize: 128,
-                            fontWeight: 700,
-                            color: '#cdd6f4',
-                            lineHeight: 1,
-                            letterSpacing: '-4px',
-                          },
-                          children: 'agx',
-                        },
-                      },
-                      {
-                        type: 'div',
-                        props: {
-                          style: {
-                            display: 'flex',
-                            fontSize: 22,
-                            fontWeight: 400,
-                            color: '#a6adc8',
-                            marginTop: '32px',
-                            lineHeight: 1.6,
-                          },
-                          children: 'Parallel AI coding agent orchestrator for isolated git worktrees',
-                        },
-                      },
-                    ],
-                  },
-                },
-                // Bottom — repo URL
-                {
-                  type: 'div',
-                  props: {
-                    style: {
-                      display: 'flex',
-                      fontSize: 20,
-                      fontWeight: 400,
-                      color: '#6c7086',
-                    },
-                    children: 'github.com/jedipunkz/agx',
-                  },
-                },
+                text('github.com/jedipunkz/agx', { fontSize: 20, color: SAND_10 }),
+                text('brew tap jedipunkz/agx', { fontSize: 20, color: SAND_10 }),
               ],
             },
           },
