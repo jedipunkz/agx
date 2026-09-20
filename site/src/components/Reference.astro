@@ -1,0 +1,138 @@
+---
+import Section from './Section.astro';
+import { commands, keybindings, statuses } from '../data/site';
+---
+
+<Section
+  id="reference"
+  label="Reference"
+  title="The surface area, in full."
+  lede="Nine commands and eight keys. Everything else is git."
+>
+  <div class="columns">
+    <div class="column">
+      <h3>Commands</h3>
+      <dl class="rows">
+        {commands.map((entry) => (
+          <div class="row">
+            <dt><code>{entry.cmd}</code></dt>
+            <dd>{entry.desc}</dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+
+    <div class="column">
+      <h3>Dashboard keys</h3>
+      <dl class="rows">
+        {keybindings.map((entry) => (
+          <div class="row">
+            <dt><kbd>{entry.key}</kbd></dt>
+            <dd>{entry.desc}</dd>
+          </div>
+        ))}
+      </dl>
+
+      <h3 class="second">Session status</h3>
+      <ul class="statuses">
+        {statuses.map((status) => (
+          <li>
+            <span class="status-name">{status.name}</span>
+            <span class="status-desc">{status.desc}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</Section>
+
+<style>
+  .columns {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-8);
+  }
+
+  h3 {
+    margin-bottom: var(--space-4);
+    color: var(--fg-muted);
+    font-family: var(--font-mono);
+    font-size: var(--text-micro);
+    font-weight: 500;
+    letter-spacing: var(--tracking-micro);
+    text-transform: uppercase;
+  }
+
+  .second {
+    margin-top: var(--space-7);
+  }
+
+  .rows {
+    border-top: 1px solid var(--line);
+  }
+
+  .row {
+    display: grid;
+    grid-template-columns: minmax(0, 14rem) minmax(0, 1fr);
+    gap: var(--space-4);
+    align-items: baseline;
+    padding: var(--space-3) 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  dt code,
+  dt kbd {
+    color: var(--fg);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  dd {
+    color: var(--fg-secondary);
+    font-size: var(--text-sm);
+  }
+
+  .statuses {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    list-style: none;
+  }
+
+  .statuses li {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-3);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    background: var(--bg-subtle);
+  }
+
+  .status-name {
+    color: var(--fg);
+    font-family: var(--font-mono);
+    font-size: var(--text-micro);
+    font-weight: 600;
+  }
+
+  .status-desc {
+    color: var(--fg-muted);
+    font-size: var(--text-micro);
+  }
+
+  @media (max-width: 860px) {
+    .columns {
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--space-7);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .row {
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--space-1);
+    }
+  }
+</style>

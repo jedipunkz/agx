@@ -1,0 +1,182 @@
+/*
+ * agx design tokens.
+ *
+ * Palette: Radix Colors "Sand" dark scale (https://www.radix-ui.com/colors).
+ * Sand is a warm, fully neutral 12-step scale, the same family Vercel Geist and
+ * shadcn/ui build their monochrome surfaces on. The site uses no chromatic hues:
+ * hierarchy comes from steps, hairlines, and type weight only.
+ *
+ * Step semantics (per the Radix scale contract):
+ *   1-2   app / subtle background      3-5   component backgrounds
+ *   6-8   borders and separators       9-10  solid, low-contrast foreground
+ *   11    secondary text (AA)          12    primary text (AAA)
+ */
+
+:root {
+  color-scheme: dark;
+
+  /* --- raw scale ------------------------------------------------------- */
+  --sand-1:  #111110;
+  --sand-2:  #191918;
+  --sand-3:  #222221;
+  --sand-4:  #2a2a28;
+  --sand-5:  #31312e;
+  --sand-6:  #3b3a37;
+  --sand-7:  #494844;
+  --sand-8:  #62605b;
+  --sand-9:  #6f6d66;
+  --sand-10: #7c7b74;
+  --sand-11: #b5b3ad;
+  --sand-12: #eeeeec;
+
+  /* --- semantic surfaces ----------------------------------------------- */
+  --bg:            var(--sand-1);
+  --bg-subtle:     var(--sand-2);
+  --bg-elevated:   var(--sand-3);
+  --bg-hover:      var(--sand-4);
+  --bg-active:     var(--sand-5);
+
+  --line:          var(--sand-6);
+  --line-strong:   var(--sand-7);
+
+  --fg:            var(--sand-12);
+  --fg-secondary:  var(--sand-11);
+  --fg-muted:      var(--sand-10);
+  --fg-faint:      var(--sand-9);
+
+  /* Inverted solid, used for the single primary action on the page. */
+  --solid:         var(--sand-12);
+  --solid-hover:   #ffffff;
+  --solid-fg:      var(--sand-1);
+
+  /* --- typography ------------------------------------------------------ */
+  --font-sans: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: 'SF Mono', ui-monospace, 'JetBrains Mono', Menlo, Monaco, Consolas, monospace;
+
+  --text-display: clamp(2.5rem, 6.4vw, 4rem);
+  --text-h2:      clamp(1.625rem, 3vw, 2.125rem);
+  --text-h3:      1.0625rem;
+  --text-lede:    clamp(1.0625rem, 1.5vw, 1.1875rem);
+  --text-body:    0.9375rem;
+  --text-sm:      0.875rem;
+  --text-micro:   0.6875rem;
+
+  --tracking-micro: 0.1em;
+  --tracking-tight: -0.02em;
+
+  /* --- space / shape --------------------------------------------------- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+  --space-10: 128px;
+
+  --radius-sm: 6px;
+  --radius:    10px;
+  --radius-lg: 14px;
+
+  --container: 1120px;
+  --gutter: clamp(20px, 5vw, 40px);
+
+  --shadow: 0 1px 2px rgb(0 0 0 / 40%), 0 12px 32px rgb(0 0 0 / 28%);
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 88px;
+}
+
+body {
+  min-width: 320px;
+  background: var(--bg);
+  color: var(--fg-secondary);
+  font-family: var(--font-sans);
+  font-size: var(--text-body);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+code,
+pre,
+kbd,
+.mono {
+  font-family: var(--font-mono);
+}
+
+a {
+  color: var(--fg);
+  text-decoration: none;
+  transition: color 0.18s var(--ease);
+}
+
+a:hover {
+  color: var(--fg);
+}
+
+::selection {
+  background: var(--sand-12);
+  color: var(--sand-1);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--sand-6);
+  border: 2px solid var(--bg);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--sand-8);
+}
+
+:focus-visible {
+  outline: 2px solid var(--fg);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/*
+ * Shell tokens. With no hue available, the terminal snippets separate
+ * command / flag / argument / operator by weight and step instead of color.
+ */
+.sh-cmd  { color: var(--fg); font-weight: 600; }
+.sh-arg  { color: var(--fg-secondary); }
+.sh-flag { color: var(--fg-secondary); font-weight: 600; }
+.sh-op   { color: var(--fg-faint); }
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

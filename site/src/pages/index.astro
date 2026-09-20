@@ -2,18 +2,23 @@
 import Layout from '../layouts/Layout.astro';
 import Nav from '../components/Nav.astro';
 import Hero from '../components/Hero.astro';
+import Agents from '../components/Agents.astro';
 import Features from '../components/Features.astro';
-import QuickStart from '../components/QuickStart.astro';
+import Workflow from '../components/Workflow.astro';
+import Reference from '../components/Reference.astro';
 import Install from '../components/Install.astro';
 import Footer from '../components/Footer.astro';
+import { site } from '../data/site';
 ---
 
-<Layout title="agx — Manage Multiple AI Coding Agents in Parallel Git Worktrees">
+<Layout title={site.title}>
   <Nav />
-  <main>
+  <main id="main">
     <Hero />
+    <Agents />
     <Features />
-    <QuickStart />
+    <Workflow />
+    <Reference />
     <Install />
   </main>
   <Footer />
